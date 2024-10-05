@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mental Health Information Form</title>
+        <link rel="stylesheet" href="in.css">
+    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Chatbot</title>
+    <style>
+        /* Basic styles for the chatbot widget */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background-color: #f1f1f1;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chat-body {
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        .chat-footer {
+            padding: 10px;
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .chat-footer button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #ddd;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mental Health Website</h1>
+    <p>Welcome to our mental health platform. Talk to our chatbot for assistance.</p>
+
+    <!-- Chatbot widget -->
+    <div class="chat-container">
+        <div class="chat-header">
+            <h3>Chat with Us</h3>
+        </div>
+
+        <div class="chat-body" id="chat-body">
+            <!-- Chat messages will appear here -->
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type your message here...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Example chatbot response logic
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                addMessage(userInput, 'user-message');
+                document.getElementById('user-input').value = ''; // Clear input
+
+                // Simulate bot response after a short delay
+                setTimeout(function () {
+                    var botResponse = getBotResponse(userInput);
+                    addMessage(botResponse, 'bot-message');
+                }, 1000);
+            }
+        }
+
+        // Function to add message to the chat
+        function addMessage(message, className) {
+            var chatBody = document.getElementById('chat-body');
+            var messageDiv = document.createElement('div');
+            messageDiv.className = className;
+            messageDiv.textContent = message;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom
+        }
+
+        // Sample bot response logic
+        function getBotResponse(input) {
+            // You can add more complex logic or integrate a chatbot API here
+            var responses = {
+                "hi": "Hello! How can I assist you today?",
+                "hello": "Hi! How are you feeling today?",
+                "help": "I am here to help you. What are you struggling with?",
+                "sad": "I'm sorry to hear that. Do you want to talk about it?",
+                "bye": "Goodbye! Take care of yourself.",
+                "i am feeling low today":"Can you write a review about it",
+                "nervous":"why",
+            };
+
+            return responses[input.toLowerCase()] || "I'm not sure how to respond to that. Can you try asking something else?";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+import joblib
+joblib.dump(model, 'models/mental_health_model.pkl')

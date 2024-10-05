@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Mental Health Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        .task-list {
+            margin: 20px 0;
+        }
+
+        .task {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Tasks for Mental Relaxation</h1>
+        <p>Complete these small tasks daily to refresh your mind:</p>
+        <div class="task-list">
+            <div class="task">Go for a 15-minute walk</div>
+            <div class="task">Practice 5 minutes of deep breathing</div>
+            <div class="task">Write down 3 things you're grateful for</div>
+            <div class="task">Listen to your favorite music for 10 minutes</div>
+            <div class="task">Take a 5-minute stretch break</div>
+        </div>
+        <button onclick="getNewTask()">New Task</button>
+    </div>
+
+    <script>
+        const tasks = [
+            'Go for a 15-minute walk',
+            'Practice 5 minutes of deep breathing',
+            'Write down 3 things you’re grateful for',
+            'Listen to your favorite music for 10 minutes',
+            'Take a 5-minute stretch break',
+            'Meditate for 10 minutes',
+            'Call a friend and chat for 15 minutes',
+            'Read 10 pages of a book you enjoy',
+            'Draw or doodle for 10 minutes',
+            'Try journaling for 10 minutes'
+        ];
+
+        function getNewTask() {
+            const taskList = document.querySelector('.task-list');
+            taskList.innerHTML = '';
+
+            const newTask = tasks[Math.floor(Math.random() * tasks.length)];
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+            taskDiv.textContent = newTask;
+
+            taskList.appendChild(taskDiv);
+        }
+    </script>
+</body>
+</html>
